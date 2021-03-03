@@ -5,7 +5,8 @@ endif
 let s:Add = 'add'
 let s:Multiply = 'multiply'
 
-let s:bin = '/home/nori/workspace/rust/neovim-calculator/target/debug/neovim-calculator'
+let s:scriptdir = resolve(expand('<sfile>:p:h') . '/..')
+let s:bin = s:scriptdir . '/target/release/neovim-calculator'
 
 function! s:connect()
   let id = s:initRpc()
