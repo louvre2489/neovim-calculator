@@ -3,6 +3,7 @@ if !exists('s:calculatorJobId')
 endif
 
 let s:Add = 'add'
+let s:Minus = 'minus'
 let s:Multiply = 'multiply'
 
 let s:scriptdir = resolve(expand('<sfile>:p:h') . '/..')
@@ -34,6 +35,13 @@ function! s:add(...)
   let s:q = get(a:, 2, 0)
 
   call rpcnotify(s:calculatorJobId, s:Add, str2nr(s:p), str2nr(s:q))
+endfunction
+
+function! s:minus(...)
+  let s:p = get(a:, 1, 0)
+  let s:q = get(a:, 2, 0)
+
+  call rpcnotify(s:calculatorJobId, s:Minus, str2nr(s:p), str2nr(s:q))
 endfunction
 
 function! s:multiply(...)

@@ -39,6 +39,17 @@ impl EventHandler {
                         .command(&format!("echo \"Sum: {} \"", sum.to_string()))
                         .unwrap();
                 }
+                Messages::Minus => {
+                    let mut nums = values.iter();
+                    let p = nums.next().unwrap().as_i64().unwrap();
+                    let q = nums.next().unwrap().as_i64().unwrap();
+
+                    let minus = self.calculator.minus(p, q);
+
+                    self.nvim
+                        .command(&format!("echo \"Minus: {} \"", minus.to_string()))
+                        .unwrap();
+                }
                 Messages::Multiply => {
                     let mut nums = values.iter();
                     let p = nums.next().unwrap().as_i64().unwrap();
@@ -72,6 +83,10 @@ impl Calculator {
         nums.iter().sum::<i64>()
     }
 
+    fn minus(&self, p: i64, q: i64) -> i64 {
+        p - q
+    }
+
     fn muliply(&self, p: i64, q: i64) -> i64 {
         p * q
     }
@@ -79,6 +94,7 @@ impl Calculator {
 
 enum Messages {
     Add,
+    Minus,
     Multiply,
     Unknown(String),
 }
@@ -87,6 +103,7 @@ impl From<String> for Messages {
     fn from(event: String) -> Self {
         match &event[..] {
             "add" => Messages::Add,
+            "minus" => Messages::Minus,
             "multiply" => Messages::Multiply,
             _ => Messages::Unknown(event),
         }
