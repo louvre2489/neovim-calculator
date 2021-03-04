@@ -27,6 +27,7 @@ endfunction
 function! s:configureCommands()
   " command! -nargs=0 SpotifyCurrentSong :call s:rpc(s:CurrentSong)
   command! -nargs=+ Add :call s:add(<f-args>)
+  command! -nargs=+ Minus :call s:minus(<f-args>)
   command! -nargs=+ Multiply :call s:multiply(<f-args>)
 endfunction
 
