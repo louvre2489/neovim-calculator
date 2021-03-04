@@ -2,3 +2,10 @@
 
 元のソースコードは[こちら](https://github.com/srishanbhattarai/neovim-calculator)
 
+# Install
+## For dein.victim
+```toml
+[[plugins]]
+repo = 'louvre2489/neovim-calculator'
+build = 'bash install.sh'
+```
