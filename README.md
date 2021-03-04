@@ -3,7 +3,7 @@
 元のソースコードは[こちら](https://github.com/srishanbhattarai/neovim-calculator)
 
 # Install
-## For dein.victim
+## For dein.vim
 ```toml
 [[plugins]]
 repo = 'louvre2489/neovim-calculator'
